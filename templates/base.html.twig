@@ -6,38 +6,51 @@
 			{% block title %}Korishow!
 			{% endblock %}
 		</title>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-
-<link rel="stylesheet" href="{{ ('/assets/css/style.css') }}">
+		<link rel="stylesheet" href="{{ ('/assets/css/style.css') }}">
+		<link rel="stylesheet" href="{{ ('/assets/css/login-modal.css') }}">
 
 		<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet"> {% block stylesheets %}{% endblock %}
 		{% block javascripts %}
+
 			<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 			<script src="https://kit.fontawesome.com/39ecff103a.js" crossorigin="anonymous"></script>
+
+			<script src="/assets/js/login-modal.js"></script>
 		{% endblock %}
+
+
 	</head>
 	<body>
 		<div>
-	<div>
-		<nav class="navbar">
-			<div class="logo">
-<a href="/">
+			<nav class="navbar">
+				<div class="logo">
+					<a href="/">
 
-				<img src="/assets/images/korishow-logo.svg" alt="Logo Korishow">
-</a>
+						<img src="/assets/images/korishow-logo.svg" alt="Logo Korishow">
+					</a>
 
+				</div>
+
+				<!-- Définition du modal -->
+
+				<!-- Bouton pour ouvrir le modal -->
+				<button class="mdc-button mdc-button--raised" id="login--btn">
+					<span class="mdc-button__ripple"></span>
+					<span class="mdc-button__label">Connexion</span>
+				</button>
+
+			</nav>
+		</div>
+		<div id="login--modal" class="modal">
+			<div class="modal--content">
+				<i class="fa-solid fa-x" id="close"></i>
+				{{ render(controller('App\\Controller\\security\\LoginFormController::login')) }}
 			</div>
-
-<button class="mdc-button mdc-button--raised login--btn">
-
-				<span class="mdc-button__ripple"></span>
-				<span class="mdc-button__label">Connexion</span>
-			</button>
-		</nav>
-	</div>
-
-			{% block body %}
-			{% endblock %}
+		</div>
+		<div>
+			{% block body %}{% endblock %}
 		</div>
 	</body>
 </html>

@@ -38,7 +38,7 @@ class AnimeViewController extends AbstractController
         }
 
         // Passer les détails de l'anime à la vue
-        return $this->render('anime_view/index.html.twig', [
+        return $this->render('anime_view/anime-view.html.twig', [
             'anime' => $animeDetails,
         ]);
     }

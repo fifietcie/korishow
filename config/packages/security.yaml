@@ -12,6 +12,11 @@ security:
         main:
             lazy: true
             provider: users_in_memory
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                # Si vous voulez rediriger l'utilisateur vers une page spécifique après une connexion réussie :
+                default_target_path: /page-apres-connexion
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

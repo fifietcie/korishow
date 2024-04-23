@@ -13,6 +13,6 @@ class AnimeSearchController extends AbstractController
      */
     public function view(): Response
     {
-        return $this->render('anime_search/index.html.twig');
+        return $this->render('anime_search/anime-search.html.twig');
     }
 }

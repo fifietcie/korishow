@@ -64,7 +64,7 @@ class AccueilController extends AbstractController
         }
 
         // Passer les deux tableaux de résultats à la vue
-        return $this->render('accueil/index.html.twig', [
+        return $this->render('accueil/accueil.html.twig', [
             'animes' => $animes,
             'recent_updates' => $recent_updates,
         ]);
