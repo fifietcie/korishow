@@ -1,0 +1,26 @@
+ {# templates/search/results.html.twig #}
+
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="/assets/css/search-result.css"/>
+{% endblock %}
+
+{% block body %}
+
+	{% if results is not empty %}
+		<ul class="search--result--list">
+			{% for result in results %}
+				<a href="anime/{{ result.id }}">
+					<li>
+						<img src="{{ result.image }}" alt="">
+
+						{{ result.title }}
+					</li>
+				</a>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>Aucun resultat trouvé.</p>
+	{% endif %}
+
+{% endblock %}

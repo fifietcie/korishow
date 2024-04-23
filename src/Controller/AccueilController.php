@@ -57,7 +57,7 @@ class AccueilController extends AbstractController
             $recent_updates = [];
         } else {
             $data2 = json_decode($response2, true);
-            $recent_updates = array_slice($data2['results'], 0, 15) ?? [];
+            $recent_updates = array_slice($data2['results'], 0, 12) ?? [];
             foreach ($recent_updates as &$update) {
                 $update['title'] = mb_substr($update['title'], 0, 35);
             }

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnimeSearchController!
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="/assets/css/search-result.css"/>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="/assets/js/search-modal.js"></script>
+
+{% endblock %}
+
+{% block body %}
+<!-- Modal Structure -->
+<div id="searchModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+<div class="mdc-text-field mdc-text-field--outlined search--bar"  >
+			<input type="text" id="search-input" class="mdc-text-field__input" name="search">
+			<div class="mdc-notched-outline">
+				<div class="mdc-notched-outline__leading"></div>
+				<div class="mdc-notched-outline__notch">
+					<label for="search-input" class="mdc-floating-label" placeholder="Rechercher"></label>
+				</div>
+				<div class="mdc-notched-outline__trailing"></div>
+			</div>
+		</div>        <div id="search-results"></div>
+    </div>
+</div>
+
+	<div class="main">
+				<div id="search-results" style="margin-top: 20px;"></div>
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+const input = document.getElementById('search-input');
+const results = document.getElementById('search-results');
+
+input.addEventListener('input', function () {
+const query = input.value;
+const encodedQuery = encodeURIComponent(query); // Ensure proper encoding
+
+if (query.length >= 3) {
+fetch (`/search/${encodedQuery}`).then(response => {
+if (!response.ok) {
+throw new Error('Network response was not ok.');
+}
+return response.text(); // Expect HTML back from the server
+}).then(html => {
+results.innerHTML = html; // Set the inner HTML to the returned HTML
+}).catch(error => {
+console.error('Error:', error);
+results.innerHTML = `<p>Error during search: ${
+error.message
+}</p>`;
+});
+} else {
+results.innerHTML = ''; // Clear results if less than 3 characters
+}
+});
+});
+	</script>
+
+{% endblock %}
+

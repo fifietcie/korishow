@@ -8,3 +8,17 @@ anime_view:
     path: '/anime/{id}'
     controller: 'App\Controller\AnimeViewController::view'
     methods: ['GET']
+
+    # config/routes.yaml
+
+# Route pour servir la page de recherche
+anime_search:
+    path: '/search'
+    controller: 'App\Controller\AnimeSearchController::view'
+    methods: ['GET']
+
+# Route pour gérer les requêtes de recherche AJAX
+search_action:
+    path: /search/{query}
+    controller: App\Controller\SearchController::search
+    methods: [GET]
