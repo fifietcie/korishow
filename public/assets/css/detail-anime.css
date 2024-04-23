@@ -1,0 +1,34 @@
+.anime--details {
+  display: flex;
+  padding-top: 5rem;
+  padding-left: 10px;
+  background-color: white;
+  flex-direction: column;
+  align-items: start;
+}
+
+.anime--info {
+  display: flex;
+}
+
+.anime--action {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.anime--detailled_info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 1rem;
+  padding: 5px;
+}
+
+.anime--title {
+    margin-bottom: 10px;
+}
+
+p {
+  text-align: left;
+  margin-bottom: 30px; /* between paragraphs */
+}

@@ -3,3 +3,8 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+anime_view:
+    path: '/anime/{id}'
+    controller: 'App\Controller\AnimeViewController::view'
+    methods: ['GET']

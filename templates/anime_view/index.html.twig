@@ -1,0 +1,61 @@
+{# templates/anime/view.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ anime.title }}
+{% endblock %}
+
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="/assets/css/detail-anime.css"/>
+{% endblock %}
+
+
+{% block body %}
+	<div class="anime--details">
+		<div class="anime--info">
+			<img class="anime--image" src="{{ anime.image }}" alt="Image {{ anime.title }}">
+			<div class="anime--detailled_info">
+				<h1 class="anime--title">{{ anime.title }}</h1>
+				<p>
+					<strong>Date de sortie :</strong>
+					{{ anime.releaseDate ? anime.releaseDate : 'Non disponible' }}</p>
+
+				<p>
+					<strong>Description :</strong>
+					<span>{{ anime.description ? anime.description : 'Aucune description disponible.' }}</span>
+				</p>
+				<p>
+					<strong>Type :</strong>
+					{{ anime.type ? anime.type : 'Non spécifié' }}</p>
+				<p>
+					<strong>Statut :</strong>
+					{{ anime.status }}</p>
+				<p>
+					<strong>Doublage ou Sous-titré :</strong>
+					{{ anime.subOrDub }}</p>
+				<p>
+					<strong>Autre nom :</strong>
+					{{ anime.otherName ? anime.otherName : 'Aucun' }}</p>
+				<p>
+					<strong>Nombre total d'épisodes :</strong>
+					{{ anime.totalEpisodes }}</p>
+				<p>
+					<strong>Genres :</strong>
+					{{ anime.genres|join(', ') }}</p>
+
+
+			</div>
+		</div>
+		<div class="anime--action">
+			<button class="mdc-button mdc-button--raised">
+				<span class="mdc-button__ripple"></span>
+				<span class="mdc-button__focus-ring"></span>
+				<span class="mdc-button__label">Ajouter à ma collection</span>
+			</button>
+		</div>
+		<div class="anime--description"></div>
+	</div>
+{% endblock %}
+
