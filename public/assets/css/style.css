@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500");
+
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Overpass", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  align-items: center;
+  height: 75px;
+  background-color: white;
+  width: 100%;
+  justify-content: space-between;
+  right: 0;
+  box-shadow: unset;
+  border-bottom: 1px solid #e5e5e5 !important;
+  transition: padding 0.4s ease-in-out;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.login--btn {
+  margin: 1rem;
+}
+
+.nav--left--fixed {
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  margin-left: 1rem;
+  top: 5.5rem;
+  height: 100vh;
+  width: 25%;
+}
+
+.nav--panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav--item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.nav--actif {
+  border-left: 4px solid white;
+}
+
+.nav--item .icon,
+.nav--search .icon {
+  margin-right: 10px;
+}
+
+.accueil--icon,
+.search--icon {
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.nav--li {
+  font-weight: bold;
+}
+
+.nav--search {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+.fa-solid {
+  color: #6200ee;
+}
+.main {
+  display: flex;
+  padding-top: 5rem;
+}
+.anime--list--container {
+  padding: 1rem;
+  margin-left: 1rem;
+  background-color: white;
+}
+.scrolling-wrapper {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.scrolling-wrapper .col-6.col-md-2 {
+  display: inline-block; /* Permet aux colonnes de s'aligner horizontalement */
+}
+
+/* Assurez-vous que les cartes ont une largeur définie */
+.scrolling-wrapper .card {
+  width: 160px; /* ou la largeur que vous préférez pour vos cartes */
+  margin-right: 10px; /* espace entre les cartes */
+}
+
+/* Style pour l'image de la carte */
+.card-img-top {
+  width: 100%;
+  height: auto;
+  border-radius: 4px; /* Si vous voulez des coins arrondis */
+}
+
+/* Style pour le corps de la carte */
+.card-body {
+  padding: 0.5rem; /* Ajustez le padding selon vos besoins */
+}
+
+/* Style pour le titre de la carte */
+.card-title {
+  font-size: 0.9rem; /* Ajustez la taille de la police selon vos besoins */
+  margin: 0; /* Si vous voulez enlever la marge par défaut du titre */
+}
+
+/* Ajoutez des styles pour le défilement sur les appareils tactiles */
+.scrolling-wrapper::-webkit-scrollbar {
+  display: none; /* Cacher la barre de défilement sur WebKit browsers */
+}
+
+/* Pour les autres navigateurs */
+.scrolling-wrapper {
+  -ms-overflow-style: none; /* pour IE and Edge */
+  scrollbar-width: none; /* pour Firefox */
+}
+
+.intro {
+  display: flex;
+  justify-content: space-between;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.intro--image {
+  height: 20rem;
+  border-radius: 100px;
+}
+
+.card {
+  margin-right: 10px;
+}
+
+.card-link {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+
+.recent--card {
+  display: flex;  /* Utilise Flexbox pour l'organisation interne de la carte */
+  flex: 0 0 20%; /* Chaque carte prendra 20% de la largeur totale */
+  max-width: 20%; /* Largeur maximale pour éviter le débordement */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur et hauteur totales de l'élément */
+  margin: 0.5%; /* Marge optionnelle pour l'espacement entre les cartes */
+  cursor: pointer; /* Ajoute un indicateur visuel que la carte est cliquable */
+}
+
+.recent--image {
+  width: 50%; /* Définit la largeur de l'image à 50% de la carte pour laisser de la place au texte */
+  height: auto; /* Maintient le ratio de l'image */
+  display: block; /* Élimine l'espace supplémentaire sous l'image */
+}
+
+.recent--title {
+  font-size: 11px;
+}
+
+.card-title {
+  overflow: hidden;
+}
+
+.card--toptitle {
+  text-align: left;
+  margin: 1rem;
+}
+
+.card-img-top {
+  width: 160px; /* Largeur fixe */
+  height: 230px; /* Hauteur fixe */
+  object-fit: cover;
+}
+
+.recent--list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+.card--details {
+  flex-grow: 1; /* Permet à .card--details de prendre l'espace restant dans la carte */
+  display: flex;
+  align-items: center; /* Centre verticalement le texte dans le div */
+  justify-content: start; /* Alignement du texte à droite de l'image */
+  padding: 10px; /* Ajoute un peu de padding autour du texte */
+}

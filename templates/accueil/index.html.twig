@@ -1,7 +1,95 @@
+{# templates/anime/index.html.twig #}
+
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Liste des Anime
+{% endblock %}
+
 
 {% block body %}
-<h1>Page d'Accueil</h1>
-{% endblock %}
+	{# NAV #}
+
+	<div
+		class="main">
+		{# SIDE NAV #}
+		<div class="nav--left--fixed">
+			<div class="nav--panel first-panel">
+				<a href="" class="nav--item nav--actif">
+					<div class="icon">
+						<i class="fa-solid fa-house"></i>
+					</div>
+					<div class="nav--li">Accueil</div>
+				</a>
+				<label for="recherche">
+					<div class="nav--item nav--actif">
+						<div class="icon">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</div>
+						<div class="nav--li">Rechercher</div>
+					</div>
+				</label>
+			</div>
+		</div>
+
+		{# CARD  #}
+		<div class="anime--list--container">
+			<div class="intro">
+				<div class="text">
+					<h4>Bienvenue sur Korishow</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+					</p>
+				</div>
+				<img class="intro--image" src="/assets/images/840_560.jpeg">
+			</div>
+			<div class="container-fluid mt-4">
+				<a>
+					<h2 class="card--toptitle">Animé à découvrir</h3>
+				</a>
+				<div class="scrolling-wrapper row flex-row flex-nowrap">
+					{% for anime in animes %}
+						<a href="anime?id={{ anime.id }}">
+							<div class="col-6 col-md-2 mb-4">
+								<div class="card">
+									<img src="{{ anime.image }}" class="card-img-top" alt="{{ anime.title }}">
+									<div class="card-body">
+										<h5 class="card-title">{{ anime.title }}</h5>
+									</div>
+								</div>
+							</div>
+						</a>
+					{% else %}
+						<div class="col">
+							<p>Aucun anime trouvé.</p>
+						</div>
+					{% endfor %}
+				</div>
+
+				{# TOP 15 #}
+
+				<div>
+					<a>
+						<h2 class="card--toptitle">Animé récemment ajoutés</h3>
+					</a>
+					<div class="recent--list">
+						{% for anime in recent_updates %}
+							<div class="recent--card">
+								<a href="anime?id={{ anime.id }}" class="card-link">
+									<img src="{{ anime.image }}" class="recent--image" alt="{{ anime.title }}">
+									<div class="card--details">
+										<span class="recent--title">{{ anime.title }}</span>
+									</div>
+								</a>
+							</div>
+						{% else %}
+							<div class="col">
+								<p>Aucun anime trouvé.</p>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}{% block stylesheets %}{% endblock %}
