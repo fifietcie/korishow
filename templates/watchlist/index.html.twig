@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="watchlist">
+        {% for anime in animes %}
+            <div class="anime-card">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}">
+                <h3>{{ anime.title }}</h3>
+                <!-- Autres détails si nécessaire -->
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
