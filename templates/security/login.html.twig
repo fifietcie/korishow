@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conexion
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="/assets/css/login-modal.css"/>
+{% endblock %}
+
+{% block body %}
+	<div class="py-12 border-b border-gray-200" id="login--content">
+		<div class="register--title">
+			<h1 class="text-6xl pt-12 pb-8">Connectez vous</h1>
+		</div>
+
+		<form method="post" class="register--form">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			{% if app.user %}
+				<div class="mb-3">
+					You are logged in as
+					{{ app.user.email }},
+					<a href="{{ path('app_logout') }}">Logout</a>
+				</div>
+			{% endif %}
+
+			<div class="register--input">
+				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="mdc-text-field mdc-text-field--outlined mt-10 mx-auto w-1/5 h-20 text-2xl outline-none" placeholder="Email" autocomplete="email" required autofocus>
+			</div>
+
+			<div class="register--input">
+				<input type="password" name="password" id="inputPassword" class="mdc-text-field mdc-text-field--outlined mt-10 mx-auto w-1/5 h-20 text-2xl outline-none" autocomplete="current-password" placeholder="Password" required>
+			</div>
+
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+			<button class="mdc-button mdc-button--raised uppercase mt-15 bg-blue-500 text-gray-100 text-lg w-1/5 mt-10 font-extrabold py-4 px-8 rounded-3xl" type="submit">
+				Se connecter
+			</button>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/assets/css/login-modal.css"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="w-4/5 m-auto text-center" id="register">
+   
+        <div class="register--content">
+            <div class="register--title">
+                <h1 class="text-6xl pt-12 pb-8">Inscription</h1>
+            </div>
+
+            <form method="post" action="{{ path('app_register') }}" class="register--form">
+                {{ form_start(registrationForm) }}
+
+                <div class="register--input">
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'mdc-text-field mdc-text-field--outlined', 'aria-labelledby': 'email-label'}}) }}
+              
+                </div>
+
+                <div  class="register--input">
+                    {{ form_widget(registrationForm.username, {'attr': {'class': 'mdc-text-field mdc-text-field--outlined', 'aria-labelledby': 'username-label'}}) }}
+                   
+                </div>
+
+                <div class="register--input">
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'mdc-text-field mdc-text-field--outlined', 'aria-labelledby': 'password-label'}}) }}
+                
+                </div>
+
+          
+                <button class="mdc-button mdc-button--raised" type="submit">
+                    <span class="mdc-button__ripple"></span>
+                    <span class="mdc-button__label">S'inscrire</span>
+                </button>
+
+                {{ form_end(registrationForm) }}
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
