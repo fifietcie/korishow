@@ -38,13 +38,13 @@
 				<div>
 					{% if is_granted('ROLE_USER') %}
 
-						<div class="logged--user">
-							<a href="{{ path('watchlist_add') }}">
-								<img src="{{ is_granted('ROLE_USER') ? ('/assets/img/avatar1.svg') : ('/assets/img/avatar2.svg') }}" alt="Avatar" class="navbar-avatar">
-								<a class="nav-link" href="{{ path('app_accueil') }}">{{ app.user.username }}</a>
-							</a>
-						</div>
+					<div class="logged--user">
 
+						<img src="{{ is_granted('ROLE_USER') ? ('/assets/img/avatar1.svg') : ('/assets/img/avatar2.svg') }}" alt="Avatar" class="navbar-avatar">
+							<a class="nav-link" href="{{ path('watchlist') }}">{{ app.user.username }}</a>
+
+					</div>
+					
 					{% else %}
 
 						<a href="/register">

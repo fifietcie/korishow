@@ -2,52 +2,33 @@
 
 namespace App\Controller;
 
+use App\Entity\Watchlist;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\User;
-use App\Entity\Watchlist;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Psr\Log\LoggerInterface;
 
 class WatchlistController extends AbstractController
 {
-    #[Route('/watchlist/add', name: 'watchlist_add', methods: ['POST'])]
+    #[Route('/anime/add-to-watchlist/{id}', name: 'anime_add_to_watchlist')]
+    public function addToWatchlist(string $id, EntityManagerInterface $em): Response
+    {
+        $userId = $this->getUser()->getUserIdentifier();
+        if (!$userId) {
+            return $this->redirectToRoute('login');
+        }
 
-public function addAnimeToWatchlist(Request $request, TokenStorageInterface $tokenStorage, HttpClientInterface $httpClient, EntityManagerInterface $entityManager): Response
-{
-    // ... autres parties du code ...
+        $watchlist = new Watchlist();
+        $watchlist->setUserId($userId);
+        $watchlist->setAnimeId($id);
 
-    $animeId = $request->request->get('id');
-    $response = $httpClient->request('GET', "https://api.consumet.org/anime/gogoanime/info/".$id);
+        $em->persist($watchlist);
+        $em->flush();
 
-    if ($response->getStatusCode() !== 200) {
-        return $this->json(['error' => 'Anime non trouvé'], Response::HTTP_NOT_FOUND);
+        return $this->redirectToRoute('anime_view', ['id' => $id]);
     }
-
-    $animeData = $response->toArray();
-
-    // Vérifiez si l'anime est déjà dans la watchlist de l'utilisateur pour éviter les doublons
-    $existingEntry = $entityManager->getRepository(Watchlist::class)->findOneBy([
-        'user' => $user_id,
-        'animeId' => $animeId,
-    ]);
-
-    if ($existingEntry) {
-        return $this->json(['error' => 'Anime déjà dans la watchlist'], Response::HTTP_CONFLICT);
-    }
-
-    $watchlistEntry = new Watchlist();
-    $watchlistEntry->setUser($user_id );
-    $watchlistEntry->setAnimeId($animeId);
-    // Vous pouvez ajouter des champs supplémentaires ici, par exemple pour stocker le titre et l'image si nécessaire
-
-    $entityManager->persist($watchlistEntry);
-    $entityManager->flush();
-
-    return $this->json(['success' => 'Anime ajouté à la watchlist'], Response::HTTP_CREATED);
-}
 }

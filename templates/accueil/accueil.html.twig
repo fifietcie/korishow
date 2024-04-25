@@ -31,12 +31,21 @@
             </label>
 
             {% if is_granted('ROLE_USER') %}
-            <a class="nav--item nav--actif" href="{{ path('watchlist_add') }}">
+            <a class="nav--item nav--actif" href="{{ path('watchlist') }}">
                 <div class="icon">
                     <i class="fa-solid fa-user-ninja"></i>
                 </div>
                 <div class="nav--li">Ma collection</div>
             </a>
+            
+                {% if is_granted('ROLE_ADMIN') %}
+            <a class="nav--item nav--actif" href="{{ path('app_accueil') }}">
+                <div class="icon">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <div class="nav--li">Statistiques</div>
+            </a>
+            {% endif %}
             <a class="nav--item nav--actif" href="{{ path('app_logout') }}">
                 <div class="icon">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -45,14 +54,7 @@
             </a>
             {% endif %}
 
-            {% if is_granted('ROLE_ADMIN') %}
-            <a class="nav--item nav--actif" href="{{ path('app_accueil') }}">
-                <div class="icon">
-                    <i class="fa-solid fa-chart-pie"></i>
-                </div>
-                <div class="nav--li">Statistiques</div>
-            </a>
-            {% endif %}
+        
         </div>
     </div>
 </div>

@@ -13,11 +13,6 @@
 
 {% block javascripts %}
 
-	<script src="/assets/js/add-watchlist.js"></script>
-	<script>
-		window.csrfToken = '{{ csrf_token('add-to-watchlist') }}';
-	</script>
-
 {% endblock %}
 
 {% block script %}{% endblock %}
@@ -59,12 +54,13 @@
 			</div>
 			<div class="anime--action">
 				{% if is_granted('ROLE_USER', 'ROLE_ADMIN') %}
-
-					<button class="mdc-button mdc-button--raised" data-anime-id="{{ anime.id }}">
-						<span class="mdc-button__ripple"></span>
-						<span class="mdc-button__focus-ring"></span>
-						<span class="mdc-button__label">Ajouter à ma collection</span>
-					</button>
+					<form action="{{ path('anime_add_to_watchlist', {'id': anime.id}) }}" method="post">
+						<button class="mdc-button mdc-button--raised">
+							<span class="mdc-button__ripple"></span>
+							<span class="mdc-button__focus-ring"></span>
+							<span class="mdc-button__label">Ajouter à ma collection</span>
+						</button>
+					</form>
 				{% endif %}
 
 			</div>

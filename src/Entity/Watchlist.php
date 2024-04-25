@@ -36,12 +36,12 @@ class Watchlist
         return $this;
     }
 
-    public function getAnimeId(): ?int
+    public function getAnimeId(): ?string
     {
         return $this->anime_id;
     }
 
-    public function setAnimeId(int $anime_id): static
+    public function setAnimeId(string $anime_id): static
     {
         $this->anime_id = $anime_id;
 
