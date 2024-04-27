@@ -8,7 +8,7 @@
 /public/bundles/
 /var/
 /vendor/
-/node_modules
+node_modules
 ###< symfony/framework-bundle ###
 # Created by https://www.toptal.com/developers/gitignore/api/symfony,phpstorm,phpstorm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=symfony,phpstorm,phpstorm+all
